@@ -10,7 +10,7 @@ var debug = require('debug')('ctu3-retro:server');
 var http = require('http');
 const db = require('../server/lib/db');
 const config = require('../server/config/index');
-var WebSocketServer = require("ws").Server;
+// var WebSocketServer = require("ws").Server;
 /**
  * Get port from environment and store in Express.
  */
@@ -31,43 +31,43 @@ var io = require('socket.io')(server)
 db.connect(config.developement.database.dsn).then(
   ()=>{
     console.log("CONNECT SUCCESSFULLY");
-    var wss = new WebSocketServer({
-      server: server,
-      // server: '10.130.193.247:8080',
-      path: "/hereIsWS",
-      port:8081
-      });
+  //   var wss = new WebSocketServer({
+  //     server: server,
+  //     // server: '10.130.193.247:8080',
+  //     path: "/hereIsWS",
+  //     port:8081
+  //     });
 
-    wss.on("connection", function(ws){
-   // ...
-      console.log(`ws 已经连接上`);
-      ws.on('message', function (message) {
+  //   wss.on("connection", function(ws){
+  //  // ...
+  //     console.log(`ws 已经连接上`);
+  //     ws.on('message', function (message) {
 
 
-        console.log('zzzz'+message);
-        const comment = commentModel.find({'comment':message});
-        var commentpromise = comment.exec();
-        commentpromise.then(function(resq){
+  //       console.log('zzzz'+message);
+  //       const comment = commentModel.find({'comment':message});
+  //       var commentpromise = comment.exec();
+  //       commentpromise.then(function(resq){
 
-          wss.clients.forEach(
-            function(client){
-              client.send(`{ 
-                "commentD": "${resq[0].commentD}" ,
-                "label": "${resq[0].label}",
-                "category":"${resq[0].category}"
-              }`, (err) => {
-                if (err) {
-                  console.log(`[SERVER] error: ${err}`);
-                }
-              });
-            }
-          )
-        })
+  //         wss.clients.forEach(
+  //           function(client){
+  //             client.send(`{ 
+  //               "commentD": "${resq[0].commentD}" ,
+  //               "label": "${resq[0].label}",
+  //               "category":"${resq[0].category}"
+  //             }`, (err) => {
+  //               if (err) {
+  //                 console.log(`[SERVER] error: ${err}`);
+  //               }
+  //             });
+  //           }
+  //         )
+  //       })
 
-        // console.log(`收到客户端的数据: ${message}`);
+  //       // console.log(`收到客户端的数据: ${message}`);
 
-      })
-    }); 
+  //     })
+  //   }); 
     server.listen(port);
 
 
