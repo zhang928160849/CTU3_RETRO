@@ -15,7 +15,7 @@ const config = require('../server/config/index');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 app.set('host','47.92.208.179');
 /**
@@ -69,7 +69,7 @@ db.connect('mongodb://localhost:27017').then(
 
   //     })
   //   }); 
-    server.listen(8080);
+    server.listen(3000);
 
 
   }
