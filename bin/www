@@ -28,7 +28,8 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-db.connect(config.developement.database.dsn).then(
+// db.connect(config.developement.database.dsn).then(
+db.connect('mongodb://localhost:27017').then(
   ()=>{
     console.log("CONNECT SUCCESSFULLY");
   //   var wss = new WebSocketServer({
