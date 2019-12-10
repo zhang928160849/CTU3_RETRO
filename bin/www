@@ -17,7 +17,7 @@ const config = require('../server/config/index');
 
 var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
-// app.set('host','10.130.226.220');
+app.set('host','47.92.208.179');
 /**
  * Create HTTP server.
  */
