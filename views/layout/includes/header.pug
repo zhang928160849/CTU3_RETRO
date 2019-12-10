@@ -1,0 +1,53 @@
+header.site-navbar.py-4.js-sticky-header.site-navbar-target(role='banner')
+  .container
+    .row.align-items-center
+      .col-6.col-xl-2
+        h1.mb-0.site-logo
+          a.mb-0(href='index.html') CTU3    
+      .col-12.col-md-10.d-none.d-xl-block
+        nav.site-navigation.position-relative.text-right(role='navigation')
+          ul.site-menu.main-menu.js-clone-nav.mr-auto.d-none.d-lg-block
+            li
+              a.nav-link(href='#home-section') Home
+            li.has-children
+              a.nav-link(href='#about-section') Retro Now
+              ul.dropdown
+                li
+                  a.nav-link(href='#team-section') Team
+                li
+                  a.nav-link(href='#analyis-section') Analyis
+                //- li
+                //-   a.nav-link(href='#faq-section') FAQ
+                //- li.has-children
+                //-   a(href='#') More Links
+                //-   ul.dropdown
+                //-     li
+                //-       a(href='#') Menu One
+                //-     li
+                //-       a(href='#') Menu Two
+                //-     li
+                //-       a(href='#') Menu Three
+            li
+              a.nav-link(href='#retrotime-section') Retro Time
+            //- li
+            //-   a.nav-link(href='#services-section') Services
+            li
+              a.nav-link(href='#highlight-section') HighLight
+            li
+              a.nav-link(href='#makecomment') Comment
+            //- li
+            //-   a.nav-link(href='#contact-section') Contact
+      .col-6.d-inline-block.d-xl-none.ml-md-0.py-3(style='position: relative; top: 3px;')
+        a.site-menu-toggle.js-menu-toggle.float-right(href='#')
+          span.icon-menu.h3
+#home-section.site-blocks-cover.overlay(style='background-image: url(images/hero_1.jpg);' data-aos='fade')
+  .container
+    .row.align-items-center.justify-content-center
+      .col-md-8.mt-lg-5.text-center
+        h1.text-uppercase.mb-5(data-aos='fade-up') S/4 HANA CTU3 RETRO
+        if logged
+          div(data-aos='fade-up' data-aos-delay='100')
+            a.btn.smoothscroll.btn-primary.mr-2.mb-2(href='#contact-section') Log on
+  a.mouse.smoothscroll(href='#about-section')
+    span.mouse-icon
+      span.mouse-wheel

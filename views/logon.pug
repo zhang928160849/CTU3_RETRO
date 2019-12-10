@@ -1,0 +1,21 @@
+extends layout/index
+block logon
+  section#contact-section.site-section.bg-light(data-aos='fade')
+      .container
+        .row.mb-5
+          .col-12.text-center
+            h2.section-title.mb-3 Logon
+        .row
+          .col-md-12.mb-5
+            form.p-5.bg-white(method='POST' action='/logonsubmit')
+              .row.form-group
+                .col-md-12
+                  label.text-black(for='email') Username
+                  input#email.form-control(type='text' name='username')
+              .row.form-group
+                .col-md-12
+                  label.text-black(for='subject') Password
+                  input#subject.form-control(type='password' name='password')
+              .row.form-group
+                .col-md-12
+                  input.btn.btn-primary.btn-md.text-white(type='submit' value='Logon')

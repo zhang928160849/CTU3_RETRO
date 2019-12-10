@@ -1,0 +1,211 @@
+extends layout/index
+block highlight
+  section#highlight-section.site-section.testimonial-wrap(data-aos='fade')
+    .container
+      .row.mb-5
+        .col-12.text-center
+          h2.section-title.mb-3 HighLight 
+    .slide-one-item.home-slider.owl-carousel
+      each comment in comments
+        div
+          .testimonial
+            blockquote.mb-5
+              p
+                | &ldquo;#{comment.commentD}&rdquo;
+            figure.mb-4.d-flex.align-items-center.justify-content-center
+              div
+                img.w-50.img-fluid.mb-3(src=`images/${comment.username}.jpg` alt='Image')
+              p #{comment.username}
+block analyis            
+  section#analyis-section.site-section.bg-light
+    .container
+      .row.mb-5
+        .col-12.text-center(data-aos='fade-up')
+          h2.section-title.mb-3 Analyis
+      .row.mb-5
+        .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='')
+          .pricing
+            h3.text-center.text-black Good
+            .price.text-center.mb-4
+              span
+                span #{commentsgood.length}
+                //- |  / year
+            ul.list-unstyled.ul-check.success.mb-5
+              if commentsgood
+                each commentgood in commentsgood
+                  li
+                    a(id=`comment_good_list` name=`${commentgood.comment}` href='#makecomment') #{commentgood.commentD}... 
+              //- li.remove Dolorum esse odio quas architecto sint
+            p.text-center
+              a.btn.btn-secondary(href='#') Filter
+        .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='100')
+          .pricing
+            h3.text-center.text-black Improve
+            .price.text-center.mb-4
+              span
+                span #{commentsimp.length}
+            ul.list-unstyled.ul-check.success.mb-5
+              if commentsimp
+                each commentimp in commentsimp
+                  li 
+                    a(id=`comment_bad_list` name=`${commentimp.comment}` href='#makecomment') #{commentimp.commentD}... 
+              //- li.remove Dolorum esse odio quas architecto sint
+            p.text-center
+              a.btn.btn-primary(href='#') Filter
+        .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='200')
+          .pricing
+            h3.text-center.text-black Bad
+            .price.text-center.mb-4
+              span
+                span #{commentsbad.length}
+            ul.list-unstyled.ul-check.success.mb-5
+              if commentsbad
+                each commentbad in commentsbad
+                  li
+                    a(id=`comment_good_list` name=`${commentbad.comment}` href='#makecomment') #{commentbad.commentD}... 
+            p.text-center
+              a.btn.btn-secondary(href='#') Filter
+block retrodo
+  if logged
+    section#services-section.site-section.border-bottom.bg-light
+      .container
+        .row.mb-5
+          .col-12.text-center(data-aos='fade')
+            h2.section-title.mb-3 Retro Do
+        .row.align-items-stretch
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-startup
+              div
+                h3 Business Consulting
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up' data-aos-delay='100')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-graphic-design
+              div
+                h3 Market Analysis
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up' data-aos-delay='200')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-settings
+              div
+                h3 User Monitoring
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up' data-aos-delay='')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-idea
+              div
+                h3 Insurance Consulting
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up' data-aos-delay='100')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-smartphone
+              div
+                h3 Financial Investment
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+          .col-md-6.col-lg-4.mb-4.mb-lg-4(data-aos='fade-up' data-aos-delay='200')
+            .unit-4
+              .unit-4-icon.mr-4
+                span.text-primary.flaticon-head
+              div
+                h3 Financial Management
+                p
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.
+                p
+                  a(href='#') Learn More
+block retrotime
+  section#retrotime-section.site-section 
+    .container
+      .row.mb-3
+        .col-12.text-center(data-aos='fade')
+          h2.section-title.mb-3 Retro Time 
+      .row.justify-content-center.mb-5(data-aos='fade-up')
+        #filters.filters.text-center.button-group.col-md-7
+          button.btn.btn-primary.active(data-filter='*') All
+          button.btn.btn-primary(data-filter='.web') Web
+          button.btn.btn-primary(data-filter='.design') Design
+          button.btn.btn-primary(data-filter='.brand') Brand
+      #posts.row.no-gutter
+        each retrotime in retrotimes
+          .item.web.col-sm-6.col-md-4.col-lg-4.col-xl-3.mb-4
+            a.item-wrap.fancybox(href=`images/${retrotime.url}.jpg` data-fancybox='gallery2')
+              span.icon-search2
+              img.img-fluid(src=`images/${retrotime.url}.jpg`)
+block ourteam
+  #about-section.site-section.cta-big-image
+    .container
+      .row.mb-5.justify-content-center
+        .col-md-8.text-center
+          h2.section-title.mb-3(data-aos='fade-up' data-aos-delay='') Our Team
+          p.lead(data-aos='fade-up' data-aos-delay='100')
+            | 我们的team紧紧围绕着唐总的方针，demi的思想主义，harry理论
+      .row
+        each member in members
+          .col-md-6.col-lg-3.mb-4(data-aos='fade-up' data-aos-delay='')
+            .team-member
+              figure
+                ul.social
+                  li
+                    a(href='#')
+                      span.icon-facebook
+                  li
+                    a(href='#')
+                      span.icon-twitter
+                  li
+                    a(href='#')
+                      span.icon-linkedin
+                  li
+                    a(href='#')
+                      span.icon-instagram
+                img.img-fluid(src=`images/${member.username}.jpg` alt='Image')
+              .p-3
+                h3 #{member.username}
+                span.position Product Manager
+block makecomment
+  section#makecomment.site-section.bg-light(data-aos='fade')
+    .container
+      .row
+        .col-md-12.mb-5
+          form.p-5.bg-white(method='POST' action='/commentsubmit')
+            h2.h4.text-black.mb-5 Write your comment
+            .row.form-group
+              .col-md-6.mb-3.mb-md-0
+                label.text-black(for='fname') category
+                select#category_sel.has-children.form-control(type='text' name='category')
+                  option.form-control(type='text' name='username' value='good') good
+                  option.form-control(type='text' name='username' value='bad') bad
+                  option.form-control(type='text' name='username' value='mid') need improve
+              .col-md-6
+                label.text-black(for='fname') label
+                select#label_sel.has-children.form-control(type='text' name='label')
+                  option.form-control(type='text' name='username' ) quality
+                  option.form-control(type='text' name='username') scurm
+                  option.form-control(type='text' name='username') development
+            .row.form-group
+              .col-md-12
+                label.text-black(for='message' name='commentD') comment
+                textarea#message.form-control(name='message', cols='30', rows='7', placeholder='Write your notes or questions here...')
+            .row.form-group
+              .col-md-12
+                input.btn.btn-primary.btn-md.text-white(type='submit', value='Commit')
+

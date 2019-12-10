@@ -1,0 +1,139 @@
+doctype html
+head
+  title Oneder &mdash; Website Template by Colorlib
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='css/bootstrap.min.css')
+  link(rel='stylesheet' href='css/jquery-ui.css')
+  link(rel='stylesheet' href='css/owl.carousel.min.css')
+  link(rel='stylesheet' href='css/owl.theme.default.min.css')
+  link(rel='stylesheet' href='css/owl.theme.default.min.css')
+  link(rel='stylesheet' href='css/jquery.fancybox.min.css')
+  link(rel='stylesheet' href='css/bootstrap-datepicker.css')
+  link(rel='stylesheet' href='fonts/flaticon/font/flaticon.css')
+  link(rel='stylesheet' href='fonts/icomoon/style.css')
+  link(rel='stylesheet' href='css/aos.css')
+  link(rel='stylesheet' href='css/style.css')
+//- script. 
+//-   var ws = new WebSocket('ws://localhost:3000/hereIsWS');
+//-   // 响应onmessage事件:
+//-   ws.onmessage = function (msg) { console.log(msg); };
+//-   // 给服务器发送一个字符串:
+//-   ws.addEventListener('open', function () {
+//-   let msg = '我是客户端';
+//-   ws.send(msg)
+//-   });  
+
+//-   $(document).ready(function(){
+//-     $("#comment_good_list").click(function(){
+//-       console.log('sssss');
+//-     //- htmlobj=$.ajax({url:"/jquery/test1.txt",async:false});
+//-     //- $("#myDiv").html(htmlobj.responseText);
+//-     });
+//-   });
+.site-wrap
+  .site-mobile-menu.site-navbar-target
+    .site-mobile-menu-header
+      .site-mobile-menu-close.mt-3
+        span.icon-close2.js-menu-toggle
+    .site-mobile-menu-body
+  include includes/header
+  block ourteam
+  block retrotime
+  block retrodo
+  block highlight
+  block analyis
+  block logon
+  block makecomment
+  footer.site-footer
+    .container
+      .row
+        .col-md-9
+          .row
+            .col-md-5
+              h2.footer-heading.mb-4 About Us
+              p
+                | 我们的team紧紧围绕着唐总的方针，demi的思想主义，harry理论
+            .col-md-3.ml-auto
+              h2.footer-heading.mb-4 Quick Links
+              ul.list-unstyled
+                li
+                  a.smoothscroll(href='#about-section') About Us
+                li
+                  a.smoothscroll(href='#services-section') Services
+                li
+                  a.smoothscroll(href='#testimonials-section') Testimonials
+                li
+                  a.smoothscroll(href='#contact-section') Contact Us
+            .col-md-3
+              h2.footer-heading.mb-4 Follow Us
+              a.pl-0.pr-3(href='#')
+                span.icon-facebook
+              a.pl-3.pr-3(href='#')
+                span.icon-twitter
+              a.pl-3.pr-3(href='#')
+                span.icon-instagram
+              a.pl-3.pr-3(href='#')
+                span.icon-linkedin
+        .col-md-3
+          h2.footer-heading.mb-4 Subscribe Newsletter
+          form.footer-subscribe(action='#' method='post')
+            .input-group.mb-3
+              input.form-control.border-secondary.text-white.bg-transparent(type='text' placeholder='Enter Email' aria-label='Enter Email' aria-describedby='button-addon2')
+              .input-group-append
+                button#button-addon2.btn.btn-primary.text-black(type='button') Send
+      .row.pt-5.mt-5.text-center
+        .col-md-12
+          .border-top.pt-5
+            p
+              // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+              | Copyright &copy;
+              script.
+                document.write(new Date().getFullYear());
+              |  All rights reserved | This template is made with 
+              i.icon-heart.text-danger(aria-hidden='true')
+              |  by 
+              a(href='https://colorlib.com' target='_blank') Colorlib
+              // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+// .site-wrap
+script(src='js/jquery-3.3.1.min.js')
+script(src='js/jquery-ui.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap.min.js')
+script(src='js/owl.carousel.min.js')
+script(src='js/jquery.countdown.min.js')
+script(src='js/jquery.easing.1.3.js')
+script(src='js/aos.js')
+script(src='js/jquery.fancybox.min.js')
+script(src='js/jquery.sticky.js')
+script(src='js/isotope.pkgd.min.js')
+script(src='js/main.js')
+script. 
+  var ws = new WebSocket('ws://10.130.226.220:8081/hereIsWS');
+  // 响应onmessage事件:
+  ws.onmessage = function (msg) { 
+    //- console.log('3333',msg.data);
+    var resJson = JSON.parse(msg.data);
+    //- console.log('222',resJson);
+    $("#message").html(resJson.commentD);
+    $("#label_sel").val(resJson.label);
+    $("#category_sel").val(resJson.category);
+
+    };
+  // 给服务器发送一个字符串:
+  ws.addEventListener('open', function () {
+  let msg = '我是客户端';
+  //- ws.send(msg)
+  });  
+
+  $(document).ready(function(){
+    $("a[id^=comment]").click(function(){
+      var comment = this.name
+      res=$.ajax({url:`/commentdetail?comment=${comment}`,async:false});
+      $("#message").html(res.responseJSON.commentD);
+      $("#label_sel").val(res.responseJSON.label);
+      $("#category_sel").val(res.responseJSON.category);
+      ws.send(comment);
+    });
+  });
