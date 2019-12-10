@@ -17,7 +17,7 @@ var WebSocketServer = require("ws").Server;
 
 var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
-app.set('host','10.130.226.220');
+// app.set('host','10.130.226.220');
 /**
  * Create HTTP server.
  */
