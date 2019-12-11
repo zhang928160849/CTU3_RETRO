@@ -15,7 +15,12 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
-router.get('/logonsubmit', memberscontrol.member_list);
+router.get('/logonsubmit',(req,res,next)=>{
+  if(req.user){
+    return next();
+  }
+  return res.status(401).end();
+}, memberscontrol.member_list);
 // router.post('/logonsubmit', memberscontrol.member_list);
 router.post('/logonsubmit', passport.authenticate('local',{
   successRedirect:'logonsubmit',
