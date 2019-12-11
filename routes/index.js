@@ -4,9 +4,13 @@ var userModel = require('../server/models/UserModel');
 var memberscontrol = require('../controller/member')
 const passport = require('passport');
 
+function redirectIfLoggedIn(req,res,next){
+  if(req.user) return res.redirect('/logonsubmit')
+  return next();
+}
 
 /* GET home page. */
-router.get('/logon', function(req, res, next) {
+router.get('/logon', redirectIfLoggedIn,function(req, res, next) {
   // req.session.visits = req.session.visits?req.session.visits+1:1;
   res.render('logon',{logged:true});
 });
