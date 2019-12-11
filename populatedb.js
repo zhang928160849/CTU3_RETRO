@@ -223,6 +223,13 @@ function createUsers(cb) {
       'vivian',
       'ctu3',
       callback
+    ),
+    callback => userCreate(
+      'TANGLIN',
+      'sap123456',
+      'lin',
+      'ctu3',
+      callback
     )
   ], cb); // 可选回调
 }
