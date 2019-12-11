@@ -82,9 +82,10 @@ exports.member_list = mainpage;
 
 exports.comment_submit = function(req,res,next){
   var  date = new Date();
+  console.log('www'+res.locals.user);
   const comment = new commentModel({
     retro:'retro1',
-    username:'test1',
+    username:res.locals.user.username,
     comment:date.getTime()  ,
     commentD:req.body.message,
     category:req.body.category,
