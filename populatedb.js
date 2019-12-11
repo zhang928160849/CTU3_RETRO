@@ -148,23 +148,79 @@ function createComments(cb){
 function createUsers(cb) {
   async.parallel([
     callback => userCreate(
-      'zhangstev0',
+      'ZHANGSTEV0',
       'sap123456',
-      'test4name',
+      'steve',
       'ctu3',
       callback
     ),
     callback => userCreate(
-      'zhangstev0',
+      'ZHAODAN1',
       'sap123456',
-      'test2name',
+      'dan',
       'ctu3',
       callback
     ),
     callback => userCreate(
-      'test3',
-      'test3pass',
-      'test3name',
+      'LIHARR',
+      'sap123456',
+      'charis',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'LIUZOE',
+      'sap123456',
+      'zoe',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'QUQ',
+      'sap123456',
+      'wei',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'XUNE',
+      'sap123456',
+      'neil',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'YUANCO',
+      'sap123456',
+      'cooper',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'KEB',
+      'sap123456',
+      'bin',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'XUDE',
+      'sap123456',
+      'demi',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'LIHARR',
+      'sap123456',
+      'harry',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
+      'YANGVIVI0',
+      'sap123456',
+      'vivian',
       'ctu3',
       callback
     )
@@ -176,17 +232,17 @@ function createMembers(cb) {
   async.parallel([
     callback => memberCreate(
       'ctu3',
-      'test1',
+      'LIHARR',
       callback
     ),
     callback => memberCreate(
       'ctu3',
-      'test2',
+      'ZHAODAN1',
       callback
     ),
     callback => memberCreate(
       'ctu3',
-      'test3',
+      'ZHANGSTEV0',
       callback
     )
   ], cb); // 可选回调
@@ -194,10 +250,10 @@ function createMembers(cb) {
 
 async.series (
   [
-    // createUsers,
+    createUsers,
     // createMembers
     // createComments,
-    createretrotimes
+    // createretrotimes
   ],
   // 可选回调
   (err, results) => {

@@ -9,8 +9,9 @@ var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var retroRouter = require('./routes/retroRouter')
+var retroRouter = require('./routes/retroRouter');
 
+const auth = require('./server/lib/auth');
 
 var app = express();
 
@@ -29,6 +30,11 @@ app.use(session({
   saveUninitialized:false,
   store:new MongoStore({ mongooseConnection:mongoose.connection})
 }));
+
+app.use(auth.initialize);
+app.use(auth.session);
+app.use(auth.setUser);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

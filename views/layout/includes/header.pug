@@ -8,7 +8,7 @@ header.site-navbar.py-4.js-sticky-header.site-navbar-target(role='banner')
         nav.site-navigation.position-relative.text-right(role='navigation')
           ul.site-menu.main-menu.js-clone-nav.mr-auto.d-none.d-lg-block
             li
-              a.nav-link(href='#home-section') Home
+              a.nav-link(href='#home-section') Home 
             li.has-children
               a.nav-link(href='#about-section') Retro Now
               ul.dropdown
@@ -45,6 +45,7 @@ header.site-navbar.py-4.js-sticky-header.site-navbar-target(role='banner')
     .row.align-items-center.justify-content-center
       .col-md-8.mt-lg-5.text-center
         h1.text-uppercase.mb-5(data-aos='fade-up') S/4 HANA CTU3 RETRO
+        h1.text-uppercase.mb-5(data-aos='fade-up') Welcome #{user.name}
         if logged
           div(data-aos='fade-up' data-aos-delay='100')
             a.btn.smoothscroll.btn-primary.mr-2.mb-2(href='#contact-section') Log on
