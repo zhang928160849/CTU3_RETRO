@@ -148,6 +148,13 @@ function createComments(cb){
 function createUsers(cb) {
   async.parallel([
     callback => userCreate(
+      'YANGLING2',
+      'sap123456',
+      'ling',
+      'ctu3',
+      callback
+    ),
+    callback => userCreate(
       'ZHANGSTEV0',
       'sap123456',
       'steve',
