@@ -109,6 +109,19 @@ script(src='js/jquery.fancybox.min.js')
 script(src='js/jquery.sticky.js')
 script(src='js/isotope.pkgd.min.js')
 script(src='js/main.js')
+script(type='text/javascript' charset='utf-8' src='https://files.cnblogs.com/files/liuzhou1/L2Dwidget.0.min.js')
+script(type='text/javascript' charset='utf-8' src='https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js')
+script(type='text/javascript').
+  L2Dwidget.init({"display": {
+  "superSample": 2,
+  "width": 200,
+  "height": 400,
+  "position":
+  "right",
+  "hOffset": 0,
+  "vOffset": 0
+  }
+  });
 script. 
   var ws = new WebSocket('ws://10.130.226.220:8081/hereIsWS');
   // 响应onmessage事件:
@@ -135,5 +148,11 @@ script.
       $("#label_sel").val(res.responseJSON.label);
       $("#category_sel").val(res.responseJSON.category);
       ws.send(comment);
+    });
+
+    $("[id=comment_switch]").click(function(){
+      res=$.ajax({url:`/commentswitch`,async:false});
+
+      $("#comment_switch").html(res.responseJSON.commentstatus);
     });
   });

@@ -3,6 +3,7 @@ var memberModel = require('../server/models/Member');
 var async = require('async');
 var commentModel = require('../server/models/Comment');
 var retroTime = require('../server/models/retrotime')
+var teamModel = require('../server/models/team')
 
 function mainpage (req,res,next){
   var list_members = [];
@@ -112,5 +113,37 @@ exports.comment_detail = function(req,res,next){
       category:resq[0].category
     });
   })
+
+}
+exports.comment_switch = function(req,res,next){
+  var that = this;
+  const teamModel1 = teamModel.find({'team':'ctu3'});
+  var teampromise = teamModel1.exec();
+  teampromise.then(function(resq){
+    console.log('ssss',resq[0].showComment);
+    if (resq[0].showComment == 'ok'){
+      that.newvalue = 'no'
+    }else{
+      that.newvalue = 'ok'
+    }
+  })
+
+  teamModel.updateOne({'team':'ctu3'},{'team':'ctu3','showComment':this.newvalue}).then((obj)=>{
+    var text = 'comment visible';
+    console.log('aaa'+this.newvalue);
+    if (this.newvalue == 'no'){
+      var text = 'comment visible';
+    }else{
+      var text = 'comment invisible';
+    }
+    res.send({  
+      commentstatus:text,
+    });
+  })
+
+
+  // res.send({  
+  //   commentstatus:resq[0].showComment,
+  // });
 
 }

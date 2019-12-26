@@ -14,6 +14,7 @@ const User          = require('./server/models/UserModel');
 const Member        = require('./server/models/Member');
 const Comment       = require('./server/models/Comment');
 const RetroTime     = require('./server/models/retrotime')
+const Team     = require('./server/models/team')
 
 
 const mongoose      = require('mongoose');
@@ -42,6 +43,23 @@ function userCreate(username,password,name,team,cb) {
     console.log('xinjian user：' + user);
     users.push(user);
     cb(null, user);
+  });
+}
+
+function teamCreate(team,showComment,cb){
+  const team1 = new Team({
+    team:team,
+    showComment:showComment
+  });
+
+  team1.save( err => {
+    if (err) {
+      cb(err, null);
+      return;
+    }
+    console.log('xinjian user：' + team1);
+    users.push(team1);
+    cb(null, team1);
   });
 }
 
@@ -111,6 +129,16 @@ function createretrotimes(cb){
       callback
     )
   ], cb); // 可选回调
+}
+
+function createTeams(cb){
+  async.parallel([
+    callback => teamCreate(
+      'ctu3',
+      'ok',
+      callback
+    ),
+  ],cb);
 }
 
 function createComments(cb){
@@ -264,10 +292,11 @@ function createMembers(cb) {
 
 async.series (
   [
-    createUsers,
+    // createUsers,
     // createMembers
     // createComments,
     // createretrotimes
+    createTeams
   ],
   // 可选回调
   (err, results) => {

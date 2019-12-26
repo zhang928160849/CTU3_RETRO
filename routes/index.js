@@ -33,5 +33,6 @@ router.post('/logonsubmit', passport.authenticate('local',{
 router.post('/commentsubmit',memberscontrol.comment_submit);
 router.get('/commentdetail',memberscontrol.comment_detail);
 
+router.get('/commentswitch',memberscontrol.comment_switch);
 
 module.exports = router;

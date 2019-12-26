@@ -47,6 +47,9 @@ header.site-navbar.py-4.js-sticky-header.site-navbar-target(role='banner')
         h1.text-uppercase.mb-5(data-aos='fade-up') S/4 HANA CTU3 RETRO
         if user 
           h1.text-uppercase.mb-5(data-aos='fade-up') Welcome #{user.name}
+        //- if user
+        //-   if user.name == 'ling'
+        button(id='comment_switch').btn.btn-primary.active(data-filter='*') STOP Comment  
         if logged
           div(data-aos='fade-up' data-aos-delay='100')
             a.btn.smoothscroll.btn-primary.mr-2.mb-2(href='#contact-section') Log on
