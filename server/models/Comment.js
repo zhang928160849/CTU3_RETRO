@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema({
     minlength:3,
   },
   comment: {
-    type: String,
+    type: Number,
     required:true,
     trim:true,
     minlength:3,

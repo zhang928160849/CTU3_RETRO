@@ -141,6 +141,20 @@ script.
   });  
 
   $(document).ready(function(){
+      res=$.ajax({url:`/findIsVisible`,async:false});
+      var sres = res.responseJSON.isVisible;
+      var isHidde = "";
+      switch(sres){
+        case 'no':
+          isHidde = "inline";
+        break;
+        default:
+          isHidde = "none";
+        break;
+      }
+      $("#analyis-section").css("display",isHidde)
+
+
     $("a[id^=comment]").click(function(){
       var comment = this.name
       res=$.ajax({url:`/commentdetail?comment=${comment}`,async:false});
@@ -152,7 +166,25 @@ script.
 
     $("[id=comment_switch]").click(function(){
       res=$.ajax({url:`/commentswitch`,async:false});
+      var sres = res.responseJSON.commentstatus;
+      $("#comment_switch").html(sres);
 
-      $("#comment_switch").html(res.responseJSON.commentstatus);
+      var isHidde = "";
+      switch(sres){
+        case 'comment visible':
+          isHidde = "inline";
+        break;
+        default:
+          isHidde = "none";
+        break;
+      }
+      $("#analyis-section").css("display",isHidde)
+      //- if( status=='ok'){
+      //-   $("#analyis-section").css("visibility","visible")
+      //- }else{
+      //-   $("#analyis-section").css("visibility","hidden")
+      //- }
+      
+
     });
   });

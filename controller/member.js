@@ -13,16 +13,18 @@ function mainpage (req,res,next){
   const users = userModel.find().sort([['team']]);
   const comment = commentModel.find();
   const retrotime = retroTime.find();
+  const team = teamModel.findOne({"team":"ctu3"});
 
   var commentpromise = comment.exec();
   var userpromise = users.exec();
   var retrotimepromise = retrotime.exec();
+  var teampromise = team.exec();
 
-  Promise.all([userpromise,commentpromise,retrotimepromise]).then(values=>{
+  Promise.all([userpromise,commentpromise,retrotimepromise,teampromise]).then(values=>{
     this.list_members = values[0];
     this.list_comments = values[1];
     this.list_retroTime = values[2];
-
+    this.list_team = values[3];
     var commentsimp = [];
     var commentsbad = [];
     var commentsgood = [];
@@ -49,7 +51,6 @@ function mainpage (req,res,next){
       members:values[0],
       comments:values[1],
       retrotimes:values[2],
-      logged:false,
       commentsimp:commentsimp,
       commentsgood :commentsgood,
       commentsbad:commentsbad
@@ -115,23 +116,32 @@ exports.comment_detail = function(req,res,next){
   })
 
 }
-exports.comment_switch = function(req,res,next){
+exports.findIsVisible = async function(req,res,nect){
+  var teampromise = teamModel.find({'team':'ctu3'}).exec();
+  await teampromise.then(function(resq){
+    res.send({  
+      isVisible:resq[0].showComment,
+    });
+  })
+
+}
+
+exports.comment_switch = async function(req,res,next){
   var that = this;
   const teamModel1 = teamModel.find({'team':'ctu3'});
   var teampromise = teamModel1.exec();
-  teampromise.then(function(resq){
-    console.log('ssss',resq[0].showComment);
-    if (resq[0].showComment == 'ok'){
-      that.newvalue = 'no'
+  await teampromise.then(function(resq){
+    that.oldValue = resq[0].showComment;
+    if (that.oldValue === 'ok'){
+      that.newValue = 'no'
     }else{
-      that.newvalue = 'ok'
+      that.newValue = 'ok'
     }
   })
 
-  teamModel.updateOne({'team':'ctu3'},{'team':'ctu3','showComment':this.newvalue}).then((obj)=>{
-    var text = 'comment visible';
-    console.log('aaa'+this.newvalue);
-    if (this.newvalue == 'no'){
+  await teamModel.updateOne({'team':'ctu3'},{'team':'ctu3','showComment':that.newValue}).then((obj)=>{
+    var text = '';
+    if (that.newValue == 'no'){
       var text = 'comment visible';
     }else{
       var text = 'comment invisible';
@@ -140,10 +150,4 @@ exports.comment_switch = function(req,res,next){
       commentstatus:text,
     });
   })
-
-
-  // res.send({  
-  //   commentstatus:resq[0].showComment,
-  // });
-
 }

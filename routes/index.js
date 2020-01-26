@@ -19,6 +19,8 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
+router.get('/findIsVisible',memberscontrol.findIsVisible)
+
 router.get('/logonsubmit',(req,res,next)=>{
   if(req.user){
     return next();

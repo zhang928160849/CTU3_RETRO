@@ -28,6 +28,11 @@ const UserSchema = mongoose.Schema({
     trim:true,
     minlength:3,
   },
+  role:{
+    type: String,
+    trim:true,
+    minlength:3,
+  }
 },{
   timestamp:true,
 });
