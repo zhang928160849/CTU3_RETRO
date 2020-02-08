@@ -27,11 +27,12 @@ db.on('error', console.error.bind(console, 'MongoDB 连接错误：'));
 
 const users         = [];
 
-function userCreate(username,password,name,team,cb) {
+function userCreate(username,password,name,role,team,cb) {
   const user = new User({
     username:username,
     password:password,
     name:name,
+    role:role,
     team:team
   });
 
@@ -179,6 +180,7 @@ function createUsers(cb) {
       'YANGLING2',
       'sap123456',
       'ling',
+      'admin',
       'ctu3',
       callback
     ),
@@ -186,6 +188,7 @@ function createUsers(cb) {
       'ZHANGSTEV0',
       'sap123456',
       'steve',
+      '',
       'ctu3',
       callback
     ),
@@ -193,6 +196,7 @@ function createUsers(cb) {
       'ZHAODAN1',
       'sap123456',
       'dan',
+      '',
       'ctu3',
       callback
     ),
@@ -200,6 +204,7 @@ function createUsers(cb) {
       'LIHARR',
       'sap123456',
       'charis',
+      '',
       'ctu3',
       callback
     ),
@@ -207,6 +212,7 @@ function createUsers(cb) {
       'LIUZOE',
       'sap123456',
       'zoe',
+      '',
       'ctu3',
       callback
     ),
@@ -214,6 +220,7 @@ function createUsers(cb) {
       'QUQ',
       'sap123456',
       'wei',
+      '',
       'ctu3',
       callback
     ),
@@ -221,6 +228,7 @@ function createUsers(cb) {
       'XUNE',
       'sap123456',
       'neil',
+      '',
       'ctu3',
       callback
     ),
@@ -228,6 +236,7 @@ function createUsers(cb) {
       'YUANCO',
       'sap123456',
       'cooper',
+      '',
       'ctu3',
       callback
     ),
@@ -235,6 +244,7 @@ function createUsers(cb) {
       'KEB',
       'sap123456',
       'bin',
+      '',
       'ctu3',
       callback
     ),
@@ -242,6 +252,7 @@ function createUsers(cb) {
       'XUDE',
       'sap123456',
       'demi',
+      '',
       'ctu3',
       callback
     ),
@@ -249,6 +260,7 @@ function createUsers(cb) {
       'LIHARR',
       'sap123456',
       'harry',
+      '',
       'ctu3',
       callback
     ),
@@ -256,6 +268,7 @@ function createUsers(cb) {
       'YANGVIVI0',
       'sap123456',
       'vivian',
+      '',
       'ctu3',
       callback
     ),
@@ -263,6 +276,7 @@ function createUsers(cb) {
       'TANGLIN',
       'sap123456',
       'lin',
+      '',
       'ctu3',
       callback
     )
