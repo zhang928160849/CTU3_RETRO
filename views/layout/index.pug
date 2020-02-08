@@ -145,7 +145,7 @@ script(type='text/javascript').
   //- });
 script. 
   var ws = new WebSocket('ws://10.130.226.220:8081/hereIsWS');
-  // 响应onmessage事件:
+  // 响应onmessage事件dd:
   ws.onmessage = function (msg) { 
     //- console.log('3333',msg.data);
     var resJson = JSON.parse(msg.data);
