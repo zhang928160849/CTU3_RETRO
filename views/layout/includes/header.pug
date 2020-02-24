@@ -44,9 +44,10 @@ header.site-navbar.py-4.js-sticky-header.site-navbar-target(role='banner')
   .container
     .row.align-items-center.justify-content-center
       .col-md-8.mt-lg-5.text-center
-        h1.text-uppercase.mb-5(data-aos='fade-up') S/4 HANA CTU3 RETRO
+        h1.text-uppercase.mb-5(data-aos='fade-up') S/4 HANA CTU3 
+          span.head-span 
         if user 
-          h1.text-uppercase.mb-5(data-aos='fade-up') Welcome #{user.name}
+          h2.text-uppercase.mb-5(data-aos='fade-up') Welcome #{user.name}
         if user
           if user.role == 'admin'
             button(id='comment_switch').btn.btn-primary.active(data-filter='*') STOP Comment  

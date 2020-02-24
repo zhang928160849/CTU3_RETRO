@@ -595,6 +595,16 @@ body:after {
     @media (max-width: 991.98px) {
       .site-blocks-cover h1 {
         font-size: 2rem; } }
+  .site-blocks-cover h1 span {
+    color: #505288;}
+    @media (max-width: 991.98px) {
+      .site-blocks-cover h1 {
+        font-size: 2rem; } }
+        .site-blocks-cover h2 {
+          font-size: 3rem;
+          font-weight: 400;
+          color: rgb(255, 233, 110);
+          font-weight: 900; }        
   .site-blocks-cover p {
     color: white;
     font-size: 1rem;
