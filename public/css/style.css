@@ -2044,3 +2044,10 @@ figure figcaption {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+
+.opt{
+  font-size: 16px;
+  border-radius: 30px;
+  padding: 10px 30px;
+}  
+

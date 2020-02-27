@@ -2,7 +2,7 @@ var userModel = require('../server/models/UserModel');
 var memberModel = require('../server/models/Member');
 var async = require('async');
 var commentModel = require('../server/models/Comment');
-var retroTime = require('../server/models/retrotime')
+var retroTimeModel = require('../server/models/retrotime')
 var teamModel = require('../server/models/team')
 
 function mainpage (req,res,next){
@@ -12,7 +12,7 @@ function mainpage (req,res,next){
 
   const users = userModel.find().sort([['team']]);
   const comment = commentModel.find();
-  const retrotime = retroTime.find();
+  const retrotime = retroTimeModel.find().sort({_id:-1});
   const team = teamModel.findOne({"team":"ctu3"});
 
   var commentpromise = comment.exec();
@@ -28,6 +28,16 @@ function mainpage (req,res,next){
     var commentsimp = [];
     var commentsbad = [];
     var commentsgood = [];
+
+    // 筛选数据
+    var coments = [];
+    for(let comment of values[1]){
+      if(comment.retro == this.list_retroTime[0].release){
+        coments.push(comment)
+      }
+    }
+
+    values[1] = coments;
 
     for(var commentins of values[1]){
       console.log(commentins);
@@ -82,11 +92,18 @@ exports.member_list = mainpage;
 // }
 
 
-exports.comment_submit = function(req,res,next){
+exports.comment_submit = async function(req,res,next){
+  var that = this;
+  console.log('ddd');
+  var reTiPromise = retroTimeModel.find().sort({_id:-1}).limit(1).exec();
+  await reTiPromise.then(function(resq){
+    that.release = resq[0].release;
+  })
+
   var  date = new Date();
   console.log('www'+res.locals.user);
   const comment = new commentModel({
-    retro:'retro1',
+    retro:that.release,
     username:res.locals.user.username,
     comment:date.getTime()  ,
     commentD:req.body.message,
@@ -95,7 +112,7 @@ exports.comment_submit = function(req,res,next){
     star:8
   });
 
-  comment.save(err=>{
+  await comment.save(err=>{
     console.log('wo'+err);
   })
   res.redirect(301,'/logonsubmit');

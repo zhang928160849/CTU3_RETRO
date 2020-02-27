@@ -37,12 +37,10 @@ block analyis
                     a(id=`comment_good_list` name=`${commentgood.comment}` href='#makecomment') #{commentgood.commentD}... 
               //- li.remove Dolorum esse odio quas architecto sint
             p.text-center
-              a.btn.btn-secondary(href='#') Filter
-              ul.dropdown
-              li
-                a.nav-link(href='#team-section') Team
-              li
-                a.nav-link(href='#analyis-section') Analyis
+              //- a.btn.btn-secondary(href='#') Filter
+              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+                each releaseOption in retrotimes
+                  option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
         .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='100')
           .pricing
             h3.text-center.text-black Improvement
@@ -56,7 +54,9 @@ block analyis
                     a(id=`comment_bad_list` name=`${commentimp.comment}` href='#makecomment') #{commentimp.commentD}... 
               //- li.remove Dolorum esse odio quas architecto sint
             p.text-center
-              a.btn.btn-primary(href='#') Filter
+              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+                each releaseOption in retrotimes
+                  option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
         .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='200')
           .pricing
             h3.text-center.text-black Bad
@@ -69,7 +69,9 @@ block analyis
                   li
                     a(id=`comment_good_list` name=`${commentbad.comment}` href='#makecomment') #{commentbad.commentD}... 
             p.text-center
-              a.btn.btn-secondary(href='#') Filter
+              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+                each releaseOption in retrotimes
+                  option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
 block retrodo
   if logged
     section#services-section.site-section.border-bottom.bg-light

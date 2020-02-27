@@ -9,16 +9,21 @@ const RetroTimeSchema = mongoose.Schema({
   },
   type: {
     type: String,
-    required:true,
+    // required:true,
     trim:true,
-    minlength:3,
+    // minlength:3,
   },
   url: {
     type: String,
-    required:true,
+    // required:true,
     trim:true,
-    minlength:3,
+    // minlength:3,
   },
+  release:{
+    type: String,
+    trim: true,
+    required:true
+  }
 },{
   timestamp:true,
 });
