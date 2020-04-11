@@ -140,7 +140,7 @@ exports.findIsVisible = async function(req,res,next){
       isVisible:resq[0].showComment,
     });
   })
-
+  
 }
 
 exports.analysis_items = async function(req,res,next){
