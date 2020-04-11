@@ -28,17 +28,17 @@ block analyis
             h3.text-center.text-black Good
             .price.text-center.mb-4
               span
-                span #{commentsgood.length}
+                span#commet_good_no #{commentsgood.length}
                 //- |  / year
-            ul.list-unstyled.ul-check.success.mb-5
+            ul#comment_good_b.list-unstyled.ul-check.success.mb-5
               if commentsgood
                 each commentgood in commentsgood
-                  li
+                  li(help_id='comment_good_list')
                     a(id=`comment_good_list` name=`${commentgood.comment}` href='#makecomment') #{commentgood.commentD}... 
               //- li.remove Dolorum esse odio quas architecto sint
             p.text-center
               //- a.btn.btn-secondary(href='#') Filter
-              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+              select#good_releases.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
                 each releaseOption in retrotimes
                   option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
         .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='100')
@@ -46,15 +46,15 @@ block analyis
             h3.text-center.text-black Improvement
             .price.text-center.mb-4
               span
-                span #{commentsimp.length}
-            ul.list-unstyled.ul-check.success.mb-5
+                span#commet_improve_no #{commentsimp.length}
+            ul#comment_improve_b.list-unstyled.ul-check.success.mb-5
               if commentsimp
                 each commentimp in commentsimp
-                  li 
-                    a(id=`comment_bad_list` name=`${commentimp.comment}` href='#makecomment') #{commentimp.commentD}... 
+                  li(help_id='comment_improve_list') 
+                    a(id=`comment_improve_list` name=`${commentimp.comment}` href='#makecomment') #{commentimp.commentD}... 
               //- li.remove Dolorum esse odio quas architecto sint
             p.text-center
-              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+              select#improve_releases.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
                 each releaseOption in retrotimes
                   option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
         .col-md-6.mb-4.mb-lg-0.col-lg-4(data-aos='fade-up' data-aos-delay='200')
@@ -62,14 +62,14 @@ block analyis
             h3.text-center.text-black Bad
             .price.text-center.mb-4
               span
-                span #{commentsbad.length}
-            ul.list-unstyled.ul-check.success.mb-5
+                span#commet_bad_no #{commentsbad.length}
+            ul#comment_bad_b.list-unstyled.ul-check.success.mb-5
               if commentsbad
                 each commentbad in commentsbad
-                  li
-                    a(id=`comment_good_list` name=`${commentbad.comment}` href='#makecomment') #{commentbad.commentD}... 
+                  li(help_id='comment_bad_list') 
+                    a(id=`comment_bad_list` name=`${commentbad.comment}` href='#makecomment') #{commentbad.commentD}... 
             p.text-center
-              select.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
+              select#bad_releases.btn.btn-secondary.selectpicker(data-style="btn-inverse") filter
                 each releaseOption in retrotimes
                   option.opt(value=`${releaseOption.release}`) #{releaseOption.release}
 block retrodo

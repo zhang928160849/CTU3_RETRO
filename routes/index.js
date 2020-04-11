@@ -36,5 +36,7 @@ router.post('/commentsubmit',memberscontrol.comment_submit);
 router.get('/commentdetail',memberscontrol.comment_detail);
 
 router.get('/commentswitch',memberscontrol.comment_switch);
+router.get('/analysis',memberscontrol.analysis_items);
+
 
 module.exports = router;

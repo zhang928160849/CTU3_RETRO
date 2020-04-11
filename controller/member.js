@@ -133,12 +133,23 @@ exports.comment_detail = function(req,res,next){
   })
 
 }
-exports.findIsVisible = async function(req,res,nect){
+exports.findIsVisible = async function(req,res,next){
   var teampromise = teamModel.find({'team':'ctu3'}).exec();
   await teampromise.then(function(resq){
     res.send({  
       isVisible:resq[0].showComment,
     });
+  })
+
+}
+
+exports.analysis_items = async function(req,res,next){
+  const comment = commentModel.find({'retro':req.query.release,
+    'category':req.query.category});
+  await comment.then(function(resq){
+    res.send({
+     analysisItem:resq 
+    })
   })
 
 }
