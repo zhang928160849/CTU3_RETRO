@@ -20,25 +20,25 @@ function mainpage (req,res,next){
   var retrotimepromise = retrotime.exec();
   var teampromise = team.exec();
 
-  // Promise.all([userpromise,commentpromise,retrotimepromise,teampromise]).then(values=>{
-    Promise.all([userpromise,commentpromise,retrotimepromise]).then(values=>{
+  Promise.all([userpromise,commentpromise,retrotimepromise,teampromise]).then(values=>{
+    // Promise.all([userpromise,commentpromise,retrotimepromise]).then(values=>{
     this.list_members = values[0];
     this.list_comments = values[1];
     this.list_retroTime = values[2];
-    // this.list_team = values[3];
+    this.list_team = values[3];
     var commentsimp = [];
     var commentsbad = [];
     var commentsgood = [];
 
     // // 筛选数据
-    // var coments = [];
-    // for(let comment of values[1]){
-    //   if(comment.retro == this.list_retroTime[0].release){
-    //     coments.push(comment)
-    //   }
-    // }
+    var coments = [];
+    for(let comment of values[1]){
+      if(comment.retro == this.list_retroTime[0].release){
+        coments.push(comment)
+      }
+    }
 
-    // values[1] = coments;
+    values[1] = coments;
 
     for(var commentins of values[1]){
       console.log(commentins);

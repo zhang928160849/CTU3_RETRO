@@ -64,11 +64,12 @@ function teamCreate(team,showComment,cb){
   });
 }
 
-function retrotimeCreate(team,type,url,cb) {
+function retrotimeCreate(team,type,url,release,cb) {
   const retrotime = new RetroTime({
     team:team,
     type:type,
-    url:url
+    url:url,
+    release:release
   });
 
   retrotime.save( err => {
@@ -127,6 +128,7 @@ function createretrotimes(cb){
       'ctu3',
       'A01',
       'xxxx',
+      'CE2002',
       callback
     )
   ], cb); // 可选回调
@@ -147,26 +149,8 @@ function createComments(cb){
     callback => commentCreate(
       'retro1',
       'test1',
-      'comment1',
+      3,
       'I think we are doing so great',
-      'good',
-      3,
-      callback
-    ),
-    callback => commentCreate(
-      'retro1',
-      'test2',
-      'comment1',
-      'I think we are doing so great, but let us try more',
-      'good',
-      3,
-      callback
-    ),
-    callback => commentCreate(
-      'retro1',
-      'test3',
-      'comment1',
-      'I think we are doing so great, yes yes yes',
       'good',
       3,
       callback
@@ -306,10 +290,10 @@ function createMembers(cb) {
 
 async.series (
   [
-    // createUsers,
-    // createMembers
-    // createComments,
-    // createretrotimes
+    createUsers,
+    createMembers,
+    createComments,
+    createretrotimes,
     createTeams
   ],
   // 可选回调
